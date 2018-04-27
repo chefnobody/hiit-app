@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Movement Types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @movement_types.each do |movement_type| %>
+      <tr>
+        <td><%= movement_type.name %></td>
+        <td><%= link_to 'Show', movement_type %></td>
+        <td><%= link_to 'Edit', edit_movement_type_path(movement_type) %></td>
+        <td><%= link_to 'Destroy', movement_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Movement Type', new_movement_type_path %>
