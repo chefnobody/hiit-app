@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :workout_movements
   resources :movement_types
   resources :movements
   resources :workouts

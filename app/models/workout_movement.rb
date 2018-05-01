@@ -1,0 +1,3 @@
+class WorkoutMovement < ApplicationRecord
+  
+end

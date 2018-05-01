@@ -1,0 +1,17 @@
+<%= form_for(workout_movement) do |f| %>
+  <% if workout_movement.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(workout_movement.errors.count, "error") %> prohibited this workout_movement from being saved:</h2>
+
+      <ul>
+      <% workout_movement.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

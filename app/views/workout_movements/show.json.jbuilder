@@ -1,0 +1,1 @@
+json.partial! "workout_movements/workout_movement", workout_movement: @workout_movement
