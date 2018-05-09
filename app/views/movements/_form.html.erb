@@ -17,8 +17,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :movement_types_id %>
-    <%= f.text_field :movement_types_id %>
+    <%= f.label :movement_type %>
+    <%= f.collection_select(:movement_types_id, MovementType.all, :id, :name) %>
   </div>
 
   <div class="actions">
