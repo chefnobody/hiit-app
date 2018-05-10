@@ -41,6 +41,9 @@ class MovementsController < ApplicationController
   # PATCH/PUT /movements/1.json
   def update
     respond_to do |format|
+
+      puts "Movement params: #{movement_params.to_json}"
+
       if @movement.update(movement_params)
         format.html { redirect_to @movement, notice: 'Movement was successfully updated.' }
         format.json { render :show, status: :ok, location: @movement }
@@ -69,7 +72,6 @@ class MovementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def movement_params
-      params.require(:movement).permit(:name)
-      params.require(:movement).permit(:movement_types_id)
+      params.require(:movement).permit(:name, :movement_types_id)
     end
 end
