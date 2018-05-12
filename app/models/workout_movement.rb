@@ -1,8 +1,6 @@
 class WorkoutMovement < ApplicationRecord
+  belongs_to :workout
   # movement_id (what movement. ex: run, thruster, burpee)
-  # - movement's have with a measurement_type (distance, rep_count)
-  # rep_count (how many times to repeat the movement)
-  # distance (how far to )
-  # time 
-  
+  # measurement_types_id (how to measure the movement) ex: { name: "Distance", value: 0 }
+
 end
