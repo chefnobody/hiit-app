@@ -26,6 +26,32 @@
     <%= f.time_select :time_cap %>
   </div>
 
+  <%= form_for @workout do |f| %>
+    Movements:
+    <ul>
+      <%= f.fields_for :workout_movements do |wmf| %>
+        <li>
+          <div class="field">
+            <%= wmf.label :movements_id %>
+            <%= wmf.collection_select(:movements_id, Movement.all, :id, :name) %>
+          </div>
+        
+          <div class="field">
+            <%= wmf.label :measurement_types_id %>
+            <%= wmf.collection_select(:measurement_types_id, MeasurementType.all, :id, :name) %>
+          </div>
+        
+          <div class="field">
+            <%= wmf.label :measurement_amount %>
+            <%= wmf.text_field :measurement_amount %>
+          </div>
+
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>

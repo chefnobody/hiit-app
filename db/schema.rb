@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180515130039) do
+ActiveRecord::Schema.define(version: 20180515140054) do
 
   create_table "athletes", force: :cascade do |t|
     t.string   "first_name"
@@ -46,8 +46,10 @@ ActiveRecord::Schema.define(version: 20180515130039) do
     t.integer  "movements_id"
     t.integer  "measurement_types_id"
     t.integer  "measurement_amount"
+    t.integer  "workout_id"
     t.index ["measurement_types_id"], name: "index_workout_movements_on_measurement_types_id"
     t.index ["movements_id"], name: "index_workout_movements_on_movements_id"
+    t.index ["workout_id"], name: "index_workout_movements_on_workout_id"
   end
 
   create_table "workouts", force: :cascade do |t|
