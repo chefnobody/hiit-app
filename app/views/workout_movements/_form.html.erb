@@ -11,6 +11,21 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= f.label :movements_id %>
+    <%= f.collection_select(:movements_id, Movement.all, :id, :name) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :measurement_types_id %>
+    <%= f.collection_select(:measurement_types_id, MeasurementType.all, :id, :name) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :measurement_amount %>
+    <%= f.text_field :measurement_amount %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
