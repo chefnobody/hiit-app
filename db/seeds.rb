@@ -13,6 +13,11 @@ barbell = MovementType.create(name: 'Barbell')
 dumbbell = MovementType.create(name: 'Dumbbell')
 kettlebell = MovementType.create(name: 'Kettlebell')
 
+# Measurement Types
+reps = MeasurementType.create(name: "Repetition")
+distance = MeasurementType.create(name: "Distance")
+time = MeasurementType.create(name: "Time")
+
 # Cardio Movements
 run = Movement.create(name: "Run", movement_types_id: cardio.id)
 row = Movement.create(name: "Row", movement_types_id: cardio.id)
@@ -36,3 +41,12 @@ ohs = Movement.create(name: "Overhead Squat", movement_types_id: barbell.id)
 thruster = Movement.create(name: "Thruster", movement_types_id: barbell.id)
 
 # Workouts
+fran = Workout.create(name: "Fran", description: "21, 15, 9: Thrusters and Pull Ups for time.")
+fran.workout_movements = [
+  WorkoutMovement.create(movements_id: thruster.id, measurement_types_id: reps.id, measurement_amount: 21, weight: 43),
+  WorkoutMovement.create(movements_id: pull_up.id, measurement_types_id: reps.id, measurement_amount: 21),
+  WorkoutMovement.create(movements_id: thruster.id, measurement_types_id: reps.id, measurement_amount: 15, weight: 43),
+  WorkoutMovement.create(movements_id: pull_up.id, measurement_types_id: reps.id, measurement_amount: 15),
+  WorkoutMovement.create(movements_id: thruster.id, measurement_types_id: reps.id, measurement_amount: 9, weight: 43),
+  WorkoutMovement.create(movements_id: pull_up.id, measurement_types_id: reps.id, measurement_amount: 9),
+]
