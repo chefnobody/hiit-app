@@ -5,6 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+#
+# Units of measurement:
+#  - Time is measured in seconds
+#  - Distance is measured in meters
+#  - Weight is mearued in kilograms
+#
 
 # Movement Types
 cardio = MovementType.create(name: 'Cardio')
@@ -41,6 +47,10 @@ bs = Movement.create(name: "Back Squat", movement_types_id: barbell.id)
 fs = Movement.create(name: "Front Squat", movement_types_id: barbell.id)
 ohs = Movement.create(name: "Overhead Squat", movement_types_id: barbell.id)
 thruster = Movement.create(name: "Thruster", movement_types_id: barbell.id)
+clean_n_jerk = Movement.create(name: "Clean & Jerk", movement_types_id: barbell.id)
+
+# Kettlebell Movements
+kbs = Movement.create(name: "Kettle Bell Swing", movement_types_id: kettlebell.id)
 
 # Workouts
 
@@ -59,21 +69,42 @@ annie = Workout.create(name: "Annie", description: "50, 40, 30, 20, 10: Double U
 }
 
 # cindy - rounds + reps
-# timecap is in seconds.
-cindy = Workout.create(name: "Annie", description: "5, 10, 15 Pull Ups, Push Ups and Air Squats. Time cap: 20min.", time_cap: 1200)
+cindy = Workout.create(name: "Cindy", description: "5, 10, 15 Pull Ups, Push Ups and Air Squats. Time cap: 20min.", time_cap: 1200)
 cindy.workout_movements = [
   WorkoutMovement.create(movements_id: pull_up.id, measurement_types_id: reps.id, measurement_amount: 5),
   WorkoutMovement.create(movements_id: push_up.id, measurement_types_id: reps.id, measurement_amount: 10),
   WorkoutMovement.create(movements_id: air_sqt.id, measurement_types_id: reps.id, measurement_amount: 15)
 ]
 
+# grace - for time
+grace = Workout.create(name: "Grace", description: "Clean & Jerk: 30 reps for time.")
+grace.workout_movements = [
+  WorkoutMovement.create(movements_id: clean_n_jerk.id, measurement_types_id: reps.id, measurement_amount: 30),
+]
+
+# helen - for time
+helen = Workout.create(name: "Helen", description: "Run, KB Swing and Pull Ups")
+helen.workout_movements = [
+  WorkoutMovement.create(movements_id: run.id, measurement_types_id: distance.id, measurement_amount: 400),
+  WorkoutMovement.create(movements_id: kbs.id, measurement_types_id: reps.id, measurement_amount: 21, weight: 25),
+  
+]
+
 # murph - for time
 murph = Workout.create(name: "Murph", description: "Tons of pull ups, push ups and air squats. Sandwhiched by two, 1-mile runs.")
 murph.workout_movements = [
-  # distance is in meters
   WorkoutMovement.create(movements_id: run.id, measurement_types_id: distance.id, measurement_amount: 1609),
   WorkoutMovement.create(movements_id: pull_up.id, measurement_types_id: reps.id, measurement_amount: 100),
   WorkoutMovement.create(movements_id: push_up.id, measurement_types_id: reps.id, measurement_amount: 200),
   WorkoutMovement.create(movements_id: air_sqt.id, measurement_types_id: reps.id, measurement_amount: 300),
   WorkoutMovement.create(movements_id: run.id, measurement_types_id: distance.id, measurement_amount: 1609),
 ]
+
+# TODO:
+# ----
+# - model a workout_result
+# - what about male/female weights?
+# - what about scaling weights/distances/times for each measurement?
+# - how do we model the EMOM style workouts? Or is that just a function of how we parse a provided score?
+# - how do we model the Rounds + Reps style workouts? Also, is this just a function of parsing the provided score?
+# - does this model allow us to do splits/summaries for each workout_movement 
