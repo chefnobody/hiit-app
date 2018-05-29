@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :workout_results
   resources :score_types
   resources :measurement_types
   resources :workout_movements

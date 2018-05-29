@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Workout Results</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Workout</th>
+      <th>Value</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @workout_results.each do |workout_result| %>
+      <tr>
+        <td><%= workout_result.workout %></td>
+        <td><%= workout_result.value %></td>
+        <td><%= link_to 'Show', workout_result %></td>
+        <td><%= link_to 'Edit', edit_workout_result_path(workout_result) %></td>
+        <td><%= link_to 'Destroy', workout_result, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Workout Result', new_workout_result_path %>

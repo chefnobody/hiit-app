@@ -128,9 +128,12 @@ body_weight_emom.workout_movements = [
   WorkoutMovement.create(movements_id: box_jump.id, measurement_types_id: reps.id, measurement_amount: 10),
 ]
 
+# workout results
+fran_result = WorkoutResult.create(workout_id: fran.id, value: 491, result_date: DateTime.new(2012, 2, 23, 10, 0, 0))
+murph_result = WorkoutResult.create(workout_id: murph.id, value: 2940, result_date: DateTime.new(2012, 2, 23, 10, 0, 0))
+
 # TODO:
-# ----
-# - model a workout_result
+#------
 # - what about male/female weights?
 # - what about scaling weights/distances/times for each measurement?
 # - how do we model the EMOM style workouts? Or is that just a function of how we parse a provided score?
