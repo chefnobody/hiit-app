@@ -134,6 +134,7 @@ murph_result = WorkoutResult.create(workout_id: murph.id, value: 2940, result_da
 
 # TODO:
 #------
+# - model an athelete that posts results.
 # - what about male/female weights?
 # - what about scaling weights/distances/times for each measurement?
 # - how do we model the EMOM style workouts? Or is that just a function of how we parse a provided score?
