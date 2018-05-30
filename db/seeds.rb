@@ -116,6 +116,7 @@ murph.workout_movements = [
   WorkoutMovement.create(movements_id: run.id, measurement_types_id: distance.id, measurement_amount: 1609),
 ]
 
+# random EMOM
 body_weight_emom = Workout.create(
   name: 'EMOM Body Weight',
   description: 'Push ups, pistols, pull ups and box jumps',
@@ -128,9 +129,14 @@ body_weight_emom.workout_movements = [
   WorkoutMovement.create(movements_id: box_jump.id, measurement_types_id: reps.id, measurement_amount: 10),
 ]
 
+# athletes
+aaron = Athlete.create(first_name: "Aaron", last_name: "Connolly", dob: DateTime.new(1980, 2, 23))
+
 # workout results
-fran_result = WorkoutResult.create(workout_id: fran.id, value: 491, result_date: DateTime.new(2012, 2, 23, 10, 0, 0))
-murph_result = WorkoutResult.create(workout_id: murph.id, value: 2940, result_date: DateTime.new(2012, 2, 23, 10, 0, 0))
+fran_result = WorkoutResult.create(workout_id: fran.id, value: 491, result_date: DateTime.new(2012, 2, 23, 10, 0, 0), athletes_id: aaron.id)
+murph_result = WorkoutResult.create(workout_id: murph.id, value: 2940, result_date: DateTime.new(2012, 2, 23, 10, 0, 0), athletes_id: aaron.id)
+annie_result = WorkoutResult.create(workout_id: annie.id, value: 439, result_date: DateTime.new(2011, 1, 18, 10, 0, 0), athletes_id: aaron.id)
+
 
 # TODO:
 #------
